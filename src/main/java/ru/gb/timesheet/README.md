@@ -1,0 +1,111 @@
+# Фреймворк Spring (семинары)
+
+## Урок 7. Spring Security. Работа с JWT. Защита от основных видов атак.
+#### Задание:<br> Используя Spring, разработайте RESTful API для вашего приложения. Ваш API должен включать операции для создания, чтения, обновления и удаления пользователей.<br><br>
+### Описание<br>
+- Настройка Spring Security для защиты приложения.<br>
+- Реализация аутентификации и авторизации с использованием JWT.<br>
+- Реализация защиты от основных видов атак, таких как SQL Injection и Cross Site Scripting (XSS).<br>
+<br><br><br>
+
+### Домашнее задание
+<br><br><br>
+
+```
+
+1. Переделать строки RoleName в сущность Role:
+1.1 Создать отдельную таблицу Role(id, name)
+1.2 Связать User <-> Role отношением ManyToMany
+2. После п.1 подправить формирование ролей в MyCustomUserDetailsService
+
+В SecurityFilterChain настроить:
+3.1 Стандартная форма логина
+3.2 Страницы с проектами доступы пользователям с ролью admin
+3.2 Страницы с таймшитами доступы пользователям с ролью user
+3.3 REST-ресурсы доступны пользователям с ролью rest
+
+**** Для rest-ресурсов НЕ показывать форму логина.
+Т.е. если пользователь не авторизован, то его НЕ редиректит на форму логина, а сразу показывается 401.
+Для авторизации нужно отдельно получить JSESSIONID и подставить в запрос.
+
+```
+<br><br><br>
+
+### Решение
+
+- Начальная страница локального сервера (Таблицы)<br><br>
+
+    http://localhost:8080/login<br><br>
+    или<br><br>
+    http://localhost:8080/home/timesheets<br>
+
+```
+http://localhost:8080/home/timesheets
+
+```
+
+- Страница проекта, например :
+
+```
+http://localhost:8080/home/projects/1
+
+```
+
+- Страница записи, например :
+
+```
+http://localhost:8080/home/timesheets/1
+
+```
+<br><br><br>
+
+### Автоматическое форматирование кода в Intellij IDEA<br><br>
+
+- В настройках IDE для автоматического переформатирования кода необходимо проверить наличие форматирования java-файла,<br> 
+для этого нажать сочетание клавиш **Ctrl + Alt + S**, чтобы открыть настройки IDE, и выбрать **Tools | Actions on Save**, далее включить параметр **Reformat code**, отметив чекбокс 'Reformat code'.<br><br>
+
+- Для форматирования содержимого java-файла, нажать сочетание клавиш
+**Ctrl + Alt + L** - Reformat code
+
+<br><br><br>
+
+### Использование log.info в классе MyCustomUserDetailsService
+
+Для использования log.info в классе MyCustomUserDetailsService и для автоматической генерации логгера,<br> 
+необходимо подключить библиотеку Lombok и аннотацию @Slf4j в файле pom.xml. <br>
+В большинстве случаев, кроме Lombok, добавлять дополнительные зависимости не требуется, <br>
+так как аннотация @Slf4j включает в себя все необходимое.
+
+### Использование JSESSIONID в запросах
+
+Для использования в запросах, требуется выполнить аутентификацию, <br>
+сохранить полученный JSESSIONID и использовать для последующих запросов.<br>
+Применять в Java можно с использованием библиотеки Spring RestTemplate, применяя в pom.xml зависимости:
+
+```xml
+
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.34</version>
+        <scope>provided</scope>
+    </dependency>
+</dependencies>
+
+
+```
+
+<br><br><br><br>
