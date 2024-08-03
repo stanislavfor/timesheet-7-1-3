@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home / Timesheet Page</title>
+    <title>timesheet-page.html</title>
 </head>
 
 <body>
@@ -30,7 +30,9 @@
 Дата создания: <span th:text="${timesheet.createdAt}"></span> <br>
 Сотрудник Исполнитель <span th:text="${timesheet.id}"></span><br>
 <td>
-<!--    <a th:href="@{'/home/projects/{id}'(id=${timesheet.projectId})}">перейти к Проекту</a>-->
+    <a th:href="@{'/home/projects/{id}'(id=${timesheet.projectId})}">перейти к проекту</a>
+
+
 </td>
 <br><br><br><br>
 <span><a th:href="@{'/home/timesheets'}">вернуться в Таблицу</a></span>

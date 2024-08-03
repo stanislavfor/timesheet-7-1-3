@@ -19,20 +19,7 @@ public class TimesheetApplication {
 
         // Создание пользователей и ролей
         createUsersAndRoles(ctx);
-
-//        // Создание проектов
-//        createProjects(ctx);
-//
-//        // Создание таймшитов
-//        createTimesheets(ctx);
     }
-
-//    private static void createTimesheets(ApplicationContext ctx) {
-//    }
-//
-//    private static void createProjects(ApplicationContext ctx) {
-//
-//    }
 
     private static void createUsersAndRoles(ApplicationContext ctx) {
         UserRepository userRepository = ctx.getBean(UserRepository.class);

@@ -13,8 +13,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-
-
 @Controller
 @RequestMapping("/home/timesheets")
 @RequiredArgsConstructor
@@ -35,8 +33,8 @@ public class TimesheetPageController {
         if (timesheetOpt.isEmpty()) {
             throw new NoSuchElementException();
         }
-
         model.addAttribute("timesheet", timesheetOpt.get());
         return "timesheet-page.html";
     }
 }
+

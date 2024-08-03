@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home / Timesheet Page</title>
+    <title>timesheets-page.html</title>
 </head>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="60">
@@ -44,12 +44,15 @@
         <td><span>&nbsp&nbsp&nbsp</span></td>
         <td><span th:text="${timesheet.projectName}"></span></td>
         <td><span>&nbsp&nbsp&nbsp</span></td>
+        <!--         <td>-->
+        <!--        <a th:href="@{'/home/projects/{id}'(id=${timesheet.projectId})}">перейти к проекту</a>-->
+        <!--         <a th:if="${timesheet.projectId != null}" th:href="@{'/home/projects/' + ${timesheet.projectId}}">перейти к-->
+        <!--        проекту</a><span th:if="${timesheet.projectId == null}">нет проекта</span>-->
+        <!--       </td>-->
         <td>
-<!--            <a th:href="@{'/home/projects/{id}'(id=${timesheet.projectId})}">перейти к проекту</a>-->
-
-<!--            <a th:if="${timesheet.projectId != null}" th:href="@{'/home/projects/' + ${timesheet.projectId}}">перейти к-->
-<!--                проекту</a><span th:if="${timesheet.projectId == null}">нет проекта</span>-->
-
+            <a th:href="@{'/home/projects/' + ${timesheet.projectId}}" th:if="${timesheet.projectId != null}">перейти к
+                проекту</a>
+            <span th:if="${timesheet.projectId == null}">нет проекта</span>
         </td>
         <td><span th:text="${timesheet.minutes}"></span></td>
         <td><span>&nbsp&nbsp&nbsp</span></td>
@@ -69,11 +72,10 @@
 <h2 style="font-size: 32px;">Сотрудники: Исполнители проектов</h2>
 <br>
 <br> <a href="/home/employees">перейти в Список</a>
-<!--<br><a th:href="@{'/home/projects/{id}'(id=3)}">перейти к проекту 3</a>-->
 <br>
 <br>
 <br>
 <br>
 </body>
-.
+
 </html>
